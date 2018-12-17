@@ -381,7 +381,7 @@ body {
   transform: translateY(-4rem); }
 
 .form__radio-group {
-  width: 48%;
+  width: 52%;
   display: inline-block; }
 
 .form__radio-input-1 {
@@ -492,6 +492,11 @@ body {
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem; }
+  .popup__all {
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem; }
   .popup__img {
     display: block;
     width: 100%;
@@ -505,6 +510,13 @@ body {
     column-count: 2;
     column-gap: 4rem;
     column-rule: 1px solid #eee;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+  .popup__list {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
@@ -746,16 +758,16 @@ body {
   background-size: 100%;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-  height: 73rem; }
+  height: 85rem; }
   .rsvp__form {
-    width: 50%;
+    width: 49%;
     padding: 6rem; }
 
 .new-item {
   background-size: 100%;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-  height: 70rem; }
+  height: 80rem; }
   .new-item__form {
     width: 90%;
     padding: 6rem; }
