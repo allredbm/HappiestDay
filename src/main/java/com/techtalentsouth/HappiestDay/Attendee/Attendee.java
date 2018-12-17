@@ -11,10 +11,8 @@ public class Attendee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private String firstName;
-	private String lastName;
-	private String guestFirstName;
-	private String guestLastName;
+	private String name;
+	private String guestName;
 	private boolean isAttending;
 	private String email;
 	private int mealSelection;
@@ -25,55 +23,35 @@ public class Attendee {
 	}
 	
 	public Attendee(
-		String firstName, 
-		String lastName, 
-		String guestFirstName, 
-		String guestLastName, 
+		String name,
+		String guestName,
 		boolean isAttending,	
 		String email, 
 		int mealSelection, 
 		String message
 	) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.guestFirstName = guestFirstName;
-		this.guestLastName = guestLastName;
+		this.name = name;
+		this.guestName = guestName;
 		this.isAttending = isAttending;
 		this.email = email;
 		this.mealSelection = mealSelection;
 		this.message = message;
 	}
-
-	public String getFirstName() {
-		return firstName;
+	
+	public String getName() {
+		return name;
 	}
 	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public String getLastName() {
-		return lastName;
+	public String getGuestName() {
+		return guestName;
 	}
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public String getGuestFirstName() {
-		return guestFirstName;
-	}
-	
-	public void setGuestFirstName(String guestFirstName) {
-		this.guestFirstName = guestFirstName;
-	}
-	
-	public String getGuestLastName() {
-		return guestLastName;
-	}
-	
-	public void setGuestLastName(String guestLastName) {
-		this.guestLastName = guestLastName;
+	public void setGuestName(String guestName) {
+		this.guestName = guestName;
 	}
 	
 	public boolean isAttending() {
@@ -110,8 +88,7 @@ public class Attendee {
 
 	@Override
 	public String toString() {
-		return "Attendee [firstName=" + firstName + ", lastName=" + lastName + ", guestFirstName=" + guestFirstName
-				+ ", guestLastName=" + guestLastName + ", isAttending=" + isAttending + ", email=" + email
-				+ ", mealSelection=" + mealSelection + ", message=" + message + "]";
+		return "Attendee [name=" + name + ", guestName=" + guestName + ", isAttending=" + isAttending + ", email="
+				+ email + ", mealSelection=" + mealSelection + ", message=" + message + "]";
 	}
 }
