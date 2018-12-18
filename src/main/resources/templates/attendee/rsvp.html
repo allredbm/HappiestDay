@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--Styles and fonts -->
+        <!-- <link rel="stylesheet" href="css/style.css"> -->
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        
+        <title>HappiestDay.Com</title>
+    </head>
+    <body>
+        <div class="rsvp__form">
+            <form action="#" class="guest-info">
+                <h2>Let us know if you're coming! </h2>
+                    <input type="text" class="form__input"  placeholder="Full name" id="name" required>
+                    <label for="name" class="form__label">Full name</label><br>
+                
+                    <input type="text" class="form__input" placeholder="Guest name" id="guest">
+                    <label for="guest" class="form__label">Guest name</label><br>
+                
+                    <input type="email" class="form__input" placeholder="Email address" id="email" required>
+                    <label for="email" class="form__label">Email address</label><br>
+                
+                    <input type="text" class="form__input" placeholder="Message" id="message">
+                    <label for="message" class="form__label">Message</label><br>
+
+
+                <div class="attending-form">
+                    <input type="radio" class="form__radio-input-1" id="yes" name="attendance">
+                    <label for="yes" class="form__radio-label-1">
+                        <span class="form__radio-button-1">Attending</span>
+                    </label>
+
+                    <input type="radio" class="form__radio-input-1" id="no" name="attendance">
+                    <label for="no" class="form__radio-label-1">
+                        <span class="form__radio-button-1">Not Attending</span>
+                    </label>
+                </div><!-- attending-form end -->
+
+                <div class="food-form">
+                    <input type="radio" class="form__radio-input-2" id="vegetarian" name="meal">
+                    <label for="vegetarian" class="form__radio-label-2">
+                        <span class="form__radio-button-2">Vegetarian</span>
+                    </label>
+
+                    <input type="radio" class="form__radio-input-2" id="none-vegetarian" name="meal">
+                    <label for="none-vegetarian" class="form__radio-label-2">
+                        <span class="form__radio-button-2">None-Vegetarian</span>
+                    </label>
+                </div><!-- food-form end -->
+
+
+                <a href="#">Submit</a>
+                
+                <a href="#" >View list of attendees</a>
+            </form><!-- guest-info class end -->
+        </div><!-- RSVP form end -->
+    </body>
+</html>
