@@ -20,10 +20,18 @@ public class AttendeeController {
 		return mv;
 	}
 	
-	@PostMapping(value="/attendee")
+	@GetMapping("/rsvp")
+	public ModelAndView rsvp(Attendee attendee) {
+		ModelAndView mv = new ModelAndView("Attendee/rsvp.html");
+		mv.addObject("attendees", attendeeRepository.findAll());
+		
+		return mv;
+	}
+	
+	@PostMapping(value="/rsvp")
 	public ModelAndView addNewUser(Attendee attendee) {
 		attendeeRepository.save(attendee);
-		ModelAndView mv = new ModelAndView("Attendee/index.html");
+		ModelAndView mv = new ModelAndView("Attendee/rsvp.html");
 		mv.addObject("attendees", attendeeRepository.findAll());
 		
 		return mv;
