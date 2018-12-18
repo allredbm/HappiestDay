@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -211,42 +211,42 @@
                 <div class="row">
                     <div class="rsvp">
                         <div class="rsvp__form">
-                            <form action="#" class="form">
+                            <form action="#" th:action="@{/attendee}" th:object="${attendee}" method="post" class="form">
                                     <div class="u-margin-bottom-small">
                                         <h2 class="heading-secondary">
                                             Let us know if you're coming!
                                         </h2>
                                     </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Full name" id="name" required>
+                                    <input type="text" class="form__input" placeholder="Full name" id="name" th:field="*{name}" required>
                                     <label for="name" class="form__label">Full name</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Guest name" id="guest">
+                                    <input type="text" class="form__input" placeholder="Guest name" id="guest" th:field="*{guestName}">
                                     <label for="guest" class="form__label">Guest name</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="email" class="form__input" placeholder="Email address" id="email" required>
+                                    <input type="email" class="form__input" placeholder="Email address" id="email" th:field="*{email}" required>
                                     <label for="email" class="form__label">Email address</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Message" id="message">
+                                    <input type="text" class="form__input" placeholder="Message" id="message" th:field="*{message}">
                                     <label for="message" class="form__label">Message</label>
                                 </div>
 
 
                                 <div class="form__group u-margin-bottom-small">
                                     <div class="form__radio-group-1">
-                                        <input type="radio" class="form__radio-input-1" id="yes" name="attendance">
-                                        <label for="yes" class="form__radio-label-1">
+                                        <input type="radio" class="form__radio-input-1" id="yes" name="attendance" th:field="*{isAttending}" value="true">
+                                        <label for="true" class="form__radio-label-1">
                                             <span class="form__radio-button-1"></span>
                                             Attending
                                         </label>
                                     </div>
 
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-1" id="no" name="attendance">
-                                        <label for="no" class="form__radio-label-1">
+                                        <input type="radio" class="form__radio-input-1" id="no" name="attendance" th:field="*{isAttending}" value="false">
+                                        <label for="false" class="form__radio-label-1">
                                             <span class="form__radio-button-1"></span>
                                             Not Attending
                                         </label>
@@ -256,7 +256,7 @@
                                 
                                 <div class="form__group u-margin-bottom-small">
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-2" id="vegetarian" name="meal">
+                                        <input type="radio" class="form__radio-input-2" id="vegetarian" name="meal" th:field="*{mealSelection}" value="1">
                                         <label for="vegetarian" class="form__radio-label-2">
                                             <span class="form__radio-button-2"></span>
                                             Vegetarian
@@ -265,7 +265,7 @@
 
 
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-2" id="none-vegetarian" name="meal">
+                                        <input type="radio" class="form__radio-input-2" id="none-vegetarian" name="meal" th:field="*{mealSelection}" value="2">
                                         <label for="none-vegetarian" class="form__radio-label-2">
                                             <span class="form__radio-button-2"></span>
                                             None-Vegetarian
@@ -276,7 +276,7 @@
 
 
                                 <div class="form__group">
-                                    <a href="#popup-confirm" class = "btn btn-primary btn-animated">Submit</a>
+                                    <button href="#popup-confirm" class="btn btn-primary btn-animated" type="submit">Submit</button>
                                 </div>
                                 <div class="form__group">
                                     <a href="#popup-attendees-list" class = "btn btn-primary btn-animated">View list of attendees</a>
@@ -425,18 +425,24 @@
                                     <h2 class="heading-secondary">
                                         Here goes the list
                                     </h2>
-                                    <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these terms before booking</h3>
-                                    <p class="popup__list">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Sed sed risus pretium quam. Aliquam sem et tortor consequat id. Volutpat odio facilisis mauris sit
-                                        amet massa vitae. Mi bibendum neque egestas congue. Placerat orci nulla pellentesque dignissim enim
-                                        sit. Vitae semper quis lectus nulla at volutpat diam ut venenatis. Malesuada pellentesque elit eget
-                                        gravida cum sociis natoque penatibus et. Proin fermentum leo vel orci porta non pulvinar neque laoreet.
-                                        Gravida neque convallis a cras semper. Molestie at elementum eu facilisis sed odio morbi quis. Faucibus
-                                        vitae aliquet nec ullamcorper sit amet risus nullam eget. Nam libero justo laoreet sit. Amet massa
-                                        vitae tortor condimentum lacinia quis vel eros donec. Sit amet facilisis magna etiam. Imperdiet sed
-                                        euismod nisi porta.
-                                    </p>
+                                    <table>
+									    <tr>
+									        <th>Name</th>
+									        <th>Guest Name</th>
+									        <th>Attending?</th>
+									        <th>Email</th>
+									        <th>Meal Selection</th>
+									        <th>Message</th>
+									    </tr>
+									    <tr th:each = "attendee: ${attendees}">
+									        <td th:text="${attendee.name}"></td>
+									        <td th:text="${attendee.guestName}"></td>
+									        <td th:text="${attendee.isAttending}"></td>
+									        <td th:text="${attendee.email}"></td>
+									        <td th:text="${attendee.mealSelection}"></td>
+									        <td th:text="${attendee.message}"></td>
+									    </tr>
+									</table>
                                 </div>
                         </form>
                     </div>
