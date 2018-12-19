@@ -1,5 +1,7 @@
 package com.techtalentsouth.HappiestDay.Registry;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,24 +27,35 @@ public class RegistryController {
 
 	@PostMapping("/registry")
 	public ModelAndView createPost(Registry registry) {
-		ModelAndView mv = new ModelAndView("registry/registry-main");
-		Registry post = registryRepository.save(registry);
+		ModelAndView mv = new ModelAndView("redirect:/registry");
+		registryRepository.save(registry);
 		mv.addObject("registryItems", registryRepository.findAll());
 		
 		return mv;
 	}
 	
-	@PutMapping(value="/registry")
-	public ModelAndView updatePost(Registry registry) {
-		ModelAndView mv = new ModelAndView("redirect:/");
+	@PutMapping(value="/registry/{id}")
+	public ModelAndView updatePost(@PathVariable Long id, Registry registry) {
+		Optional<Registry> fetch = registryRepository.findById(id);
+		Registry currentRegistry = fetch.get();
+		currentRegistry.setItemName(registry.getItemName());
+		currentRegistry.setItemURL(registry.getItemURL());
+		currentRegistry.setImageURL(registry.getImageURL());
+		currentRegistry.setDesireScale(registry.getDesireScale());
 		registryRepository.save(registry);
+		
+		ModelAndView mv = new ModelAndView("redirect:/registry");
+		mv.addObject("registryItems", registryRepository.findAll());
+		
 		return mv;
 	}
 	
-	@DeleteMapping(value="/registry/delete/{id}")
+	@DeleteMapping(value="/registry/{id}")
 	public ModelAndView deletePost(@PathVariable Long id) {
-		ModelAndView mv = new ModelAndView("redirect:/");
 		registryRepository.deleteById(id);
+		ModelAndView mv = new ModelAndView("redirect:/registry");
+		mv.addObject("registryItems", registryRepository.findAll());
+		
 		return mv;
 	}
 }

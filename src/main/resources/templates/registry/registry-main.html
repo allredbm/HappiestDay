@@ -45,10 +45,15 @@
                                     <a href="#" class="btn btn-primary-light">Mark as bought</a>
                                 </div>
                                 <div class="card__cta-3">
-                                    <a href="#" class="btn btn-primary-dark">Remove from registry</a>
+                                    <form action="#" th:action="@{'/registry/{id}'(id=${registry.getId()})}" th:method="delete" class="form-horizontal">
+									    <div class="form-group">
+									        <input type="hidden" name="_method" value="delete"/>
+									        <button type="submit" class="btn btn-primary-dark">Remove From Registry</button>
+									    </div>
+									</form>
                                 </div>
                                 <div class="card__cta-4">
-                                    <a href="#" class="btn btn-primary-dark">Edit registry</a>
+                                    <a href="#popup-registry-edit" class="btn btn-primary-dark">Edit registry</a>
                                 </div>
                             </div>
                         </div>
@@ -83,10 +88,16 @@
                                     <a href="#" class="btn btn-primary-light">Mark as bought</a>
                                 </div>
                                 <div class="card__cta-3">
-                                    <a href="#" class="btn btn-primary-dark">Remove from registry</a>
+                                    <form action="#" th:action="@{'/registry/{id}'(id=${registry.getId()})}" th:method="delete" class="form-horizontal">
+									    <div class="form-group">
+									        <input type="hidden" name="_method" value="delete"/>
+									        <button type="submit" class="btn btn-primary-dark">Remove From Registry</button>
+									    </div>
+									</form>
                                 </div>
                                 <div class="card__cta-4">
-                                    <a href="#" class="btn btn-primary-dark">Edit registry</a>
+                                    <div class="card__cta-4">
+                                    <a href="#popup-registry-edit" class="btn btn-primary-dark">Edit registry</a>
                                 </div>
                             </div>
                         </div>
@@ -120,10 +131,15 @@
                                     <a href="#" class="btn btn-primary-light">Mark as bought</a>
                                 </div>
                                 <div class="card__cta-3">
-                                    <a href="#" class="btn btn-primary-dark">Remove from registry</a>
+                                    <form action="#" th:action="@{'/registry/{id}'(id=${registry.getId()})}" th:method="delete" class="form-horizontal">
+									    <div class="form-group">
+									        <input type="hidden" name="_method" value="delete"/>
+									        <button type="submit" class="btn btn-primary-dark">Remove From Registry</button>
+									    </div>
+									</form>
                                 </div>
                                 <div class="card__cta-4">
-                                    <a href="#" class="btn btn-primary-dark">Edit registry</a>
+                                    <a href="#popup-registry-edit" class="btn btn-primary-dark">Edit registry</a>
                                 </div>
                             </div>
                         </div>
@@ -212,6 +228,45 @@
 									</table>
                                 </div>
                         </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="popup" id="popup-registry-edit">
+            <div class="popup__content">
+                <div class="popup__all">
+                    <a href="#section-home" class="popup__close">&times;</a>
+                    <div class="new-item__form">
+                        <!-- <form action="#" th:action="@{'/registry/{id}'(id=${registry.getId()})}" th:method="put" class="form">
+                                <div class="u-margin-bottom-small">
+                                    <h2 class="heading-secondary">
+                                        Edit Registry
+                                    </h2>
+                                </div>
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="Item name" id="name" th:field="*{itemName}" required>
+                                <label for="name" class="form__label">Item name</label>
+                            </div>
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="Link to item" id="url" th:field="*{itemURL}" required>
+                                <label for="url" class="form__label">Link to item</label>
+                            </div>
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="Link to item image" id="image-url" th:field="*{imageURL}" required>
+                                <label for="image-url" class="form__label">Link to item image</label>
+                            </div>
+
+                            <div class="form__group">
+                                <input type="number" class="form__input" placeholder="Desire scale" id="desire" th:field="*{desireScale}" required>
+                                <label for="desire" class="form__label">Desire scale (1- 5)</label>
+                            </div>
+    
+                            <div class="form__group">
+                                    <button href="#" class="btn btn-primary" type="submit">Update item</button>
+                            </div>
+                        </form>  -->
                     </div>
                     
                 </div>
