@@ -23,17 +23,12 @@ public class RegistryController {
 		return mv;
 	}
 
-//	@GetMapping(value="/registry/new")
-//	public ModelAndView newPostForm(Registry registry) {
-//		ModelAndView mv = new ModelAndView("registry/new");
-//		return mv;
-//	}
-
 	@PostMapping("/registry")
 	public ModelAndView createPost(Registry registry) {
 		ModelAndView mv = new ModelAndView("registry/registry-main");
 		Registry post = registryRepository.save(registry);
-		mv.addObject("post", post);
+		mv.addObject("registryItems", registryRepository.findAll());
+		
 		return mv;
 	}
 	

@@ -148,7 +148,7 @@
                 <div class="popup__right">
                     <a href="#section-registry" class="popup__close">&times;</a>
                     <div class="new-item__form">
-                        <!-- <form action="#" th:action="@{/registry}" th:object="${registry}" method="post" class="form">
+                        <form action="#" th:action="@{/registry}" th:object="${registry}" method="post" class="form">
                                 <div class="u-margin-bottom-small">
                                     <h2 class="heading-secondary">
                                         Add a new item
@@ -168,21 +168,16 @@
                             </div>
 
                             <div class="form__group">
-                                <input type="number" class="form__input" placeholder="Quantity required" id="quantity" th:field="*{quanityRequested}" required>
-                                <label for="quantity" class="form__label">Quantity required</label>
-                            </div>
-
-                            <div class="form__group">
                                 <input type="number" class="form__input" placeholder="Desire scale" id="desire" th:field="*{desireScale}" required>
                                 <label for="desire" class="form__label">Desire scale (1- 5)</label>
                             </div>
     
                             <div class="form__group">
-                                    <a href="#" class="btn btn-primary">Add item</a>
+                                    <button href="#" class="btn btn-primary" type="submit">Add item</button>
                             </div>
 
                             
-                        </form> -->
+                        </form> 
                     </div>
                     
                 </div>
@@ -212,8 +207,6 @@
 									        <td th:text="${registryItem.itemName}"></td>
 									        <td th:text="${registryItem.itemURL}"></td>
 									        <td th:text="${registryItem.imageURL}"></td>
-									        <td th:text="${registryItem.quantityRequested}"></td>
-									        <td th:text="${registryItem.quantityPurchased}"></td>
 									        <td th:text="${registryItem.desireScale}"></td>
 									    </tr>
 									</table>
