@@ -54,7 +54,7 @@ public class Attendee {
 		this.guestName = guestName;
 	}
 	
-	public boolean isAttending() {
+	public boolean getIsAttending() {
 		return isAttending;
 	}
 	

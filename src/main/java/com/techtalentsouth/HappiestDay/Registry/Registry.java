@@ -27,6 +27,7 @@ public class Registry {
     	this.itemURL = itemURL;
     	this.imageURL = imageURL;
     	this.quantityRequested = quantityRequested;
+    	this.quantityPurchased = 0;
     	this.desireScale = desireScale;
     }
 
