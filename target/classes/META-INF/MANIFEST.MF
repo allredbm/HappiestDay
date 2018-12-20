@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Built-By: chofia
-Build-Jdk: 10.0.2
+Built-By: Ben
+Build-Jdk: 11.0.1
 Implementation-Title: HappiestDay
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: com.techtalentsouth
-Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/HappiestDay
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/HappiestDay
 Created-By: Maven Integration for Eclipse
 

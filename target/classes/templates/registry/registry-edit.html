@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="../static/Fragments/head.html :: head">
+<title id="pageTitle">HappiestDay.Com</title>
+</head>
+
+
+<body>
+	<div class="navigation" th:include="../static/fragments/navbar.html"></div>
+
+	<div class="u-center-text u-margin-bottom-big">
+		<h2 class="heading-secondary">Edit Registry</h2>
+	</div>
+	
+	<div class="row">
+		<form action="#" th:action="@{'/registry/{id}'(id=${registryItem.getId()})}" th:object="${registryItem}" th:method="put" class="form">
+			<div class="form__group">
+				<input type="text" class="form__input" placeholder="Item name"
+					id="name" th:field="*{itemName}" required> <label for="name"
+					class="form__label">Item name</label>
+			</div>
+			<div class="form__group">
+				<input type="text" class="form__input" placeholder="Link to item" id="url" th:field="*{itemURL}" required>
+				<label for="url"class="form__label">Link to item</label>
+			</div>
+			<div class="form__group">
+				<input type="text" class="form__input" placeholder="Link to item image" id="image-url" th:field="*{imageURL}" required>
+				<label for="image-url" class="form__label">Link to item image</label>
+			</div>
+		
+			<div class="form__group">
+				<input type="number" class="form__input" placeholder="Desire scale" id="desire" th:field="*{desireScale}" required>
+				<label for="desire" class="form__label">Desire scale (1- 5)</label>
+			</div>
+		
+			<div class="form__group">
+				<button class="btn btn-primary" type="submit">Update item</button>
+			</div>
+		</form>
+	</div>
+
+	<div th:include="../static/Fragments/footer.html"></div>
+</body>
+</html>

@@ -1,38 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-
-        <link rel="stylesheet" href="css/icon-font.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-        
-        <title>HappiestDay.Com</title>
+    <head th:include="../static/Fragments/head.html :: head">
+        <title id="pageTitle">HappiestDay.Com</title>
     </head>
 
 
     <body>
-        <div class="navigation">
-            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-
-            <label for="navi-toggle" class="navigation__button">
-                <span class="navigation__icon">&nbsp;</span>
-            </label>
-
-            <div class="navigation__background">&nbsp;</div>
-
-            <nav class="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><a href="#section-about" class="navigation__link"><span>01</span>About the event</a></li>
-                    <li class="navigation__item"><a href="#section-registry" class="navigation__link"><span>02</span>Wedding registry</a></li>
-                    <li class="navigation__item"><a href="#section-rsvp" class="navigation__link"><span>03</span>RSVP</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Contact-us</a></li>
-                    </ul>
-            </nav>
-        </div>
+        <div class="navigation" th:include="../static/fragments/navbar.html"></div>
     
         <header class="header" id="home">
             <div class="header__text-box">
@@ -41,13 +15,13 @@
                     <span class = "heading-primary-sub">Share our day with us</span>
                 </h1>
 
-                <a href="#section-rsvp" class = "btn btn-white btn-animated">RSVP</a>
+                <a href="/rsvp" class = "btn btn-white btn-animated">RSVP</a>
             </div>
             
         </header>
 
         <main>
-            
+<!--            
             <section class="section-about" id="section-about">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
@@ -75,8 +49,47 @@
                     </div>
                 </div>
             </section>
+-->
+    <section class="section-about" id="section-about">
+        <div class="u-center-text u-margin-bottom-small">
+            <h2 class="heading-secondary">Information about the day</h2>
+        </div>
+        <div class="row">
+            <div class="u-center-text u-margin-bottom-big">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                    You are invited to our wedding <br> <i><small style="font-weight:400;">September
+                            7, 2019 @ 3pm - til the groom passes out</small></i>
+                </h3>
+                <p class="paragraph">
+                    <b>Charlotte Riverview Garden</b> <br> 8485 Riverview Lane <br>
+                    Charlotte, NC 28205 <br> (704)555-0123
+                </p>
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                    Accommodations and logistics <br>
+                    <i><small style="font-weight:400;">We have reserved a block of rooms at the
+                            hotel.<br>Please mention the Knight/Underwood wedding to receive the
+                            reduced rate</small></i>
+                </h3>
+                <div class="paragraph">
+                    <b>The Johanssen Resort</b> <br> 7361 Riverview Lane <br>
+                    Charlotte, NC 28205 <br> (704)321-0555<br>
+                </div>
+            </div>
+            <!-- Information end -->
+            <div class="composition" style="width: 30%; margin: auto;">
+                <img src="img/gettingmarried2.jpg" alt="Photo1"
+                    class="composition__photo composition__photo--p1"> <img
+                    src="img/gettingmarried4.jpg" alt="Photo2"
+                    class="composition__photo composition__photo--p2"> <img
+                    src="img/gettingmarried5.jpg" alt="Photo3"
+                    class="composition__photo composition__photo--p3">
+            </div>
+            <!-- Image begin -->
+        </div>
+        <!-- Content end -->
+    </section>
 
-
+<!-- 
             <section class="section-registry" id="section-registry">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
@@ -288,32 +301,9 @@
             </section>
 
         </main>
-        
-        <footer class="footer">
-            <div class="footer__logo-box">
-                <img src="img/footer-image.png" alt="Full logo" class="footer__logo">
-            </div>
-            <div class="row">
-                <div class="col-1-of-2">
-                    <div class="footer__navigation">
-                        <ul class="footer__list">
-                            <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-1-of-2">
-                    <p class="footer__copyright">
-                        Built by Andrew Keddis, Ben Allred, Thomas Weldon, Ana Sofia Saenz
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-
-
+ -->        
+        <div th:include="../static/Fragments/footer.html"></div>
+<!--
         <div class="popup" id="popup-add">
             <div class="popup__content">
                 <div class="popup__left">
@@ -450,6 +440,6 @@
                 </div>
             </div>
         </div>
-
+-->
     </body>
 </html>
