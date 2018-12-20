@@ -45,7 +45,13 @@
 									</form>
                                 </div>
                                 <div class="card__cta-4">
-                                    <a href="#popup-registry-edit" class="btn btn-primary-dark">Edit Item</a>
+                                    <!-- <a href="/registry/" class="btn btn-primary-dark">Edit Item</a> -->
+                                    <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.Id})}" th:method="get" class="form-horizontal">
+								        <div class="form-group">
+								            <input type="hidden" name="_method" value="get"/>
+									        <button type="submit" class="btn btn-primary-dark">Edit Item</button>
+									    </div>
+									</form>
                                 </div>
                             </div>
                         </div>

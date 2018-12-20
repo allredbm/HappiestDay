@@ -1,5 +1,7 @@
 package com.techtalentsouth.HappiestDay.Registry;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,21 +21,52 @@ public class RegistryController {
 	public ModelAndView index(Registry registryItem) {
 		ModelAndView mv = new ModelAndView("registry/registry-main");
 		mv.addObject("registryItems", registryRepository.findAll());
+		
 		return mv;
 	}
 
 	@PostMapping("/registry")
 	public ModelAndView createPost(Registry registry) {
 		ModelAndView mv = new ModelAndView("registry/registry-main");
-		Registry post = registryRepository.save(registry);
+		registryRepository.save(registry);
 		mv.addObject("registryItems", registryRepository.findAll());
+		
 		return mv;
 	}
 	
-	@PutMapping(value="/registry")
-	public ModelAndView updatePost(Registry registry) {
-		ModelAndView mv = new ModelAndView("redirect:/");
-		registryRepository.save(registry);
+	@GetMapping("/registry/{id}")
+	public ModelAndView edit(@PathVariable Long id, Registry registryItem) {
+		Optional<Registry> registryItem1 = registryRepository.findById(id);
+		
+		if (!registryItem1.isPresent()) {
+			ModelAndView mv = new ModelAndView("error");
+			return mv;
+        }
+		
+		ModelAndView mv = new ModelAndView("registry/registry-edit");
+		mv.addObject("registryItem", registryItem1.get());
+		
+		return mv;
+	}
+	
+	@PutMapping(value="/registry/{id}")
+	public ModelAndView updatePost(@PathVariable Long id, Registry registry) {
+		Optional<Registry> registryItem1 = registryRepository.findById(id);
+		
+		if (!registryItem1.isPresent()) {
+			ModelAndView mv = new ModelAndView("error");
+			return mv;
+        }
+		
+		Registry currentItem = registryItem1.get();
+		currentItem.setItemName(registry.getItemName());
+		currentItem.setItemURL(registry.getItemURL());
+		currentItem.setImageURL(registry.getImageURL());
+		currentItem.setDesireScale(registry.getDesireScale());
+		registryRepository.save(currentItem);
+		
+		ModelAndView mv = new ModelAndView("redirect:/registry");
+		
 		return mv;
 	}
 	
