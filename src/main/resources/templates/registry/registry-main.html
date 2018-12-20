@@ -45,7 +45,6 @@
 									</form>
                                 </div>
                                 <div class="card__cta-4">
-                                    <!-- <a href="/registry/" class="btn btn-primary-dark">Edit Item</a> -->
                                     <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.Id})}" th:method="get" class="form-horizontal">
 								        <div class="form-group">
 								            <input type="hidden" name="_method" value="get"/>
@@ -136,43 +135,5 @@
                 </div>
             </div>
         </div>
-        
-        <div class="popup" id="popup-registry-edit">
-            <div class="popup__content">
-                <div class="popup__all">
-                    <a href="#section-home" class="popup__close">&times;</a>
-                    <div class="new-item__form">
-                        <!-- <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.getId()})}" th:method="put" class="form">
-                                <div class="u-margin-bottom-small">
-                                    <h2 class="heading-secondary">
-                                        Edit Registry
-                                    </h2>
-                                </div>
-                            <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Item name" id="name" th:field="*{itemName}" required>
-                                <label for="name" class="form__label">Item name</label>
-                            </div>
-                            <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Link to item" id="url" th:field="*{itemURL}" required>
-                                <label for="url" class="form__label">Link to item</label>
-                            </div>
-                            <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Link to item image" id="image-url" th:field="*{imageURL}" required>
-                                <label for="image-url" class="form__label">Link to item image</label>
-                            </div>
-
-                            <div class="form__group">
-                                <input type="number" class="form__input" placeholder="Desire scale" id="desire" th:field="*{desireScale}" required>
-                                <label for="desire" class="form__label">Desire scale (1- 5)</label>
-                            </div>
-    
-                            <div class="form__group">
-                                    <button class="btn btn-primary" type="submit">Update item</button>
-                            </div>
-                        </form> -->
-                    </div>
-                </div>
-            </div>
-		</div>
     </body>
 </html>
