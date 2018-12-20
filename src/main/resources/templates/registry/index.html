@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head th:include="../static/Fragments/head.html :: head">
-        <title id="pageTitle">HappiestDay.Com</title>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/icon-font.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        
+        <title>HappiestDay.Com</title>
     </head>
 
 
     <body>
-        <div class="navigation" th:include="../static/fragments/navbar.html"></div>
+        
+        <div class="navigation">
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+            <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
+
+            <div class="navigation__background">&nbsp;</div>
+
+            <nav class="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="#section-about" class="navigation__link"><span>01</span>About the event</a></li>
+                    <li class="navigation__item"><a href="#section-registry" class="navigation__link"><span>02</span>Wedding registry</a></li>
+                    <li class="navigation__item"><a href="#section-rsvp" class="navigation__link"><span>03</span>RSVP</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Contact-us</a></li>
+                    </ul>
+            </nav>
+        </div>
     
         <header class="header" id="home">
             <div class="header__text-box">
@@ -15,13 +42,13 @@
                     <span class = "heading-primary-sub">Share our day with us</span>
                 </h1>
 
-                <a href="/rsvp" class = "btn btn-white btn-animated">RSVP</a>
+                <a href="#section-rsvp" class = "btn btn-white btn-animated">RSVP</a>
             </div>
             
         </header>
 
         <main>
-<!--            
+            
             <section class="section-about" id="section-about">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
@@ -42,99 +69,67 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/gettingmarried2.jpg" alt="Photo1" class="composition__photo composition__photo--p1">
-                            <img src="img/gettingmarried4.jpg" alt="Photo2" class="composition__photo composition__photo--p2">
-                            <img src="img/gettingmarried5.jpg" alt="Photo3" class="composition__photo composition__photo--p3">
+                            <img src="/img/gettingmarried2.jpg" alt="Photo1" class="composition__photo composition__photo--p1">
+                            <img src="/img/gettingmarried4.jpg" alt="Photo2" class="composition__photo composition__photo--p2">
+                            <img src="/img/gettingmarried5.jpg" alt="Photo3" class="composition__photo composition__photo--p3">
                         </div>
                     </div>
                 </div>
             </section>
--->
-    <section class="section-about" id="section-about">
-        <div class="u-center-text u-margin-bottom-small">
-            <h2 class="heading-secondary">Information about the day</h2>
-        </div>
-        <div class="row">
-            <div class="u-center-text u-margin-bottom-big">
-                <h3 class="heading-tertiary u-margin-bottom-small">
-                    You are invited to our wedding <br> <i><small style="font-weight:400;">September
-                            7, 2019 @ 3pm - til the groom passes out</small></i>
-                </h3>
-                <p class="paragraph">
-                    <b>Charlotte Riverview Garden</b> <br> 8485 Riverview Lane <br>
-                    Charlotte, NC 28205 <br> (704)555-0123
-                </p>
-                <h3 class="heading-tertiary u-margin-bottom-small">
-                    Accommodations and logistics <br>
-                    <i><small style="font-weight:400;">We have reserved a block of rooms at the
-                            hotel.<br>Please mention the Knight/Underwood wedding to receive the
-                            reduced rate</small></i>
-                </h3>
-                <div class="paragraph">
-                    <b>The Johanssen Resort</b> <br> 7361 Riverview Lane <br>
-                    Charlotte, NC 28205 <br> (704)321-0555<br>
-                </div>
-            </div>
-            <!-- Information end -->
-            <div class="composition" style="width: 30%; margin: auto;">
-                <img src="img/gettingmarried2.jpg" alt="Photo1"
-                    class="composition__photo composition__photo--p1"> <img
-                    src="img/gettingmarried4.jpg" alt="Photo2"
-                    class="composition__photo composition__photo--p2"> <img
-                    src="img/gettingmarried5.jpg" alt="Photo3"
-                    class="composition__photo composition__photo--p3">
-            </div>
-            <!-- Image begin -->
-        </div>
-        <!-- Content end -->
-    </section>
 
-<!-- 
+
             <section class="section-registry" id="section-registry">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
                             Our wedding registry
                     </h2>
                 </div>
-                <div class="row">
-                    <div class="col-1-of-3">
-                        <div class="card">
+                 <div class="row">
+                     <div class="col-1-of-3" th:each="registry : ${registryItems}">
+<!--
+                     <div th:each="registry : ${registryItems}">
+ -->
+                        <div class="card" >
                             
                             <div class="card__side card__side--front">
-                                <div class="card__picture card__picture" style="background-image: url(https://c1.neweggimages.com/NeweggImage/ProductImage/AFSW_1_201802091424519518.jpg)">
-                                    
+<!--                                 <div class="card__picture" style="background-image: url(https://c1.neweggimages.com/NeweggImage/ProductImage/AFSW_1_201802091424519518.jpg)">
+ -->
+                                 <div class="card__picture card__picture" th:style="'background-image:url(' + ${registry.imageURL} + ');'">
+                                     <span th:text="*{imageURL}"></span>
                                 </div>
                                 <h4 class="card__heading">
-                                    <span class="card__heading-span card__heading-span--1">Espresso Machine</span>
+                                    <span class="card__heading-span card__heading-span--1" th:text="${registry.itemName}">Name</span>
                                 </h4>
                                 <div class="card__details">
                                     <ul>
-                                        <li>We'd like <span>2</span> of these</li>
-                                        <li><div>This is how bad we want it</div>
+<!--                                        <li>We'd like <span th:text="${registry.quantityRequested}"></span> of these</li> -->
+                                        <li>Desire Scale: <span th:text="${registry.desireScale}"></span> of 5</li>
+<!--                                         <li><div>This is how bad we want it</div>
                                             <div class="desire-scale-box" data-progress-percent="25">
                                             <span class="desire-scale-fill" style="width: 70%">
                                                     &nbsp;
                                             </span>
                                         </div></li>
-                                    </ul>
+ -->                                    </ul>
                                 </div>
                             </div>
                             <div class="card__side card__side--back card__side--back-1">
                                 <div class="card__cta-1">
-                                    <a href="#" class="btn btn-white">Buy</a>
+                                    <a th:href="${registry.itemURL}" target="_blank" class="btn btn-white">View & Buy</a>
                                 </div>
                                 <div class="card__cta-2">
-                                    <a href="#" class="btn btn-primary-light">Mark as bought</a>
+                                     <a th:href="@{/registry/bought/{id}(id=${registry.getId()})}" class="btn btn-white">Mark as bought</a>
                                 </div>
                                 <div class="card__cta-3">
-                                    <a href="#" class="btn btn-primary-dark">Remove from registry</a>
+                                     <a th:href="@{/registry/remove/{id}(id=${registry.getId()})}" class="btn btn-primary-light">Remove</a>
                                 </div>
                                 <div class="card__cta-4">
-                                    <a href="#" class="btn btn-primary-dark">Edit registry</a>
+                                     <a th:href="@{/registry/edit/{id}(id=${registry.getId()})}" class="btn btn-primary-light">Edit</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+<!--
                     <div class="col-1-of-3">
                         <div class="card">
 
@@ -210,8 +205,9 @@
                             </div>
                         </div>
                     </div>
+ -->
                 </div>
-                <div class="u-center-text u-margin-bottom-big">
+                 <div class="u-center-text u-margin-bottom-big">
                     <a href="#popup-add" class="btn btn-primary">Add another item</a>
                 </div>
                 <div class="u-center-text u-margin-bottom-big">
@@ -224,42 +220,42 @@
                 <div class="row">
                     <div class="rsvp">
                         <div class="rsvp__form">
-                            <form action="#" th:action="@{/attendee}" th:object="${attendee}" method="post" class="form">
+                            <form action="#" class="form">
                                     <div class="u-margin-bottom-small">
                                         <h2 class="heading-secondary">
                                             Let us know if you're coming!
                                         </h2>
                                     </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Full name" id="name" th:field="*{name}" required>
+                                    <input type="text" class="form__input" placeholder="Full name" id="name" required>
                                     <label for="name" class="form__label">Full name</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Guest name" id="guest" th:field="*{guestName}">
+                                    <input type="text" class="form__input" placeholder="Guest name" id="guest">
                                     <label for="guest" class="form__label">Guest name</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="email" class="form__input" placeholder="Email address" id="email" th:field="*{email}" required>
+                                    <input type="email" class="form__input" placeholder="Email address" id="email" required>
                                     <label for="email" class="form__label">Email address</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Message" id="message" th:field="*{message}">
+                                    <input type="text" class="form__input" placeholder="Message" id="message">
                                     <label for="message" class="form__label">Message</label>
                                 </div>
 
 
                                 <div class="form__group u-margin-bottom-small">
                                     <div class="form__radio-group-1">
-                                        <input type="radio" class="form__radio-input-1" id="yes" name="attendance" th:field="*{isAttending}" value="true">
-                                        <label for="true" class="form__radio-label-1">
+                                        <input type="radio" class="form__radio-input-1" id="yes" name="attendance">
+                                        <label for="yes" class="form__radio-label-1">
                                             <span class="form__radio-button-1"></span>
                                             Attending
                                         </label>
                                     </div>
 
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-1" id="no" name="attendance" th:field="*{isAttending}" value="false">
-                                        <label for="false" class="form__radio-label-1">
+                                        <input type="radio" class="form__radio-input-1" id="no" name="attendance">
+                                        <label for="no" class="form__radio-label-1">
                                             <span class="form__radio-button-1"></span>
                                             Not Attending
                                         </label>
@@ -269,7 +265,7 @@
                                 
                                 <div class="form__group u-margin-bottom-small">
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-2" id="vegetarian" name="meal" th:field="*{mealSelection}" value="1">
+                                        <input type="radio" class="form__radio-input-2" id="vegetarian" name="meal">
                                         <label for="vegetarian" class="form__radio-label-2">
                                             <span class="form__radio-button-2"></span>
                                             Vegetarian
@@ -278,7 +274,7 @@
 
 
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-2" id="none-vegetarian" name="meal" th:field="*{mealSelection}" value="2">
+                                        <input type="radio" class="form__radio-input-2" id="none-vegetarian" name="meal">
                                         <label for="none-vegetarian" class="form__radio-label-2">
                                             <span class="form__radio-button-2"></span>
                                             None-Vegetarian
@@ -289,7 +285,7 @@
 
 
                                 <div class="form__group">
-                                    <button href="#popup-confirm" class="btn btn-primary btn-animated" type="submit">Submit</button>
+                                    <a href="#popup-confirm" class = "btn btn-primary btn-animated">Submit</a>
                                 </div>
                                 <div class="form__group">
                                     <a href="#popup-attendees-list" class = "btn btn-primary btn-animated">View list of attendees</a>
@@ -301,49 +297,85 @@
             </section>
 
         </main>
- -->        
-        <div th:include="../static/Fragments/footer.html"></div>
-<!--
+        
+        <footer class="footer">
+            <div class="footer__logo-box">
+                <img src="/img/footer-image.png" alt="Full logo" class="footer__logo">
+            </div>
+            <div class="row">
+                <div class="col-1-of-2">
+                    <div class="footer__navigation">
+                        <ul class="footer__list">
+                            <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
+                            <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
+                            <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
+                            <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-1-of-2">
+                    <p class="footer__copyright">
+                        Built by Andrew Keddis, Ben Allred, Thomas Weldon, Ana Sofia Saenz
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+
+
         <div class="popup" id="popup-add">
             <div class="popup__content">
                 <div class="popup__left">
-                    <img src="img/weddingpresent2.png" alt="Tour photo" class="popup__img">
-                    <img src="img/weddingpresent1.jpg" alt="Tour photo" class="popup__img">
+                    <img src="/img/weddingpresent2.png" alt="Tour photo" class="popup__img">
+                    <img src="/img/weddingpresent1.jpg" alt="Tour photo" class="popup__img">
                 </div>
                 <div class="popup__right">
                     <a href="#section-registry" class="popup__close">&times;</a>
                     <div class="new-item__form">
-                        <form action="#" class="form">
+<!--                         <form action="#" class="form">
+ -->				 		<form action="#" class="form" th:action="@{/registry}" th:object="${registry}" method="post">
                                 <div class="u-margin-bottom-small">
                                     <h2 class="heading-secondary">
                                         Add a new item
                                     </h2>
                                 </div>
                             <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Item name" id="name" required>
+<!--                                 <input type="text" class="form__input" placeholder="Item name" id="name" required>
+ -->
+					  			<input type="text" class="form__input" placeholder="Item Name" th:field="*{itemName}" required/>
                                 <label for="name" class="form__label">Item name</label>
                             </div>
                             <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Link to item" id="url" required>
+<!--                                 <input type="text" class="form__input" placeholder="Link to item" id="url" required>
+ -->
+ 					    		<input type="text" class="form__input" placeholder="Item URL" th:field="*{itemURL}" />
                                 <label for="url" class="form__label">Link to item</label>
                             </div>
                             <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Link to item image" id="image-url" required>
+<!--                                 <input type="text" class="form__input" placeholder="Link to item image" id="image-url" required>
+ -->
+ 								<input type="text" class="form__input" placeholder="Image URL" th:field="*{imageURL}" />
                                 <label for="image-url" class="form__label">Link to item image</label>
                             </div>
 
                             <div class="form__group">
-                                <input type="number" class="form__input" placeholder="Quantity required" id="quantity" required>
+<!--                                 <input type="number" class="form__input" placeholder="Quantity required" id="quantity" required>
+ -->
+					 			<input type="number" class="form__input" placeholder="Quantity" th:field="*{quantityRequested}" />
                                 <label for="quantity" class="form__label">Quantity required</label>
                             </div>
 
                             <div class="form__group">
-                                <input type="number" class="form__input" placeholder="Desire scale" id="desire" required>
+<!--                                 <input type="number" class="form__input" placeholder="Desire scale" id="desire" required>
+ -->
+					 			<input type="number" class="form__input" placeholder="Desire Scale" th:field="*{desireScale}" />
                                 <label for="desire" class="form__label">Desire scale (1- 5)</label>
                             </div>
     
+    
+    
                             <div class="form__group">
-                                    <a href="#" class="btn btn-primary">Add item</a>
+                                    <button type="submit" class="btn btn-primary">Add item</button>
                             </div>
 
                             
@@ -357,7 +389,7 @@
         <div class="popup" id="popup-confirm">
                 <div class="popup__content">
                     <div class="popup__left">
-                        <img src="img/see-you-soon.png" alt="Tour photo" class="popup__img">
+                        <img src="/img/see-you-soon.png" alt="Tour photo" class="popup__img">
                     </div>
                     <div class="popup__right">
                         <a href="#section-home" class="popup__close">&times;</a>
@@ -415,24 +447,18 @@
                                     <h2 class="heading-secondary">
                                         Here goes the list
                                     </h2>
-                                    <table>
-									    <tr>
-									        <th>Name</th>
-									        <th>Guest Name</th>
-									        <th>Attending?</th>
-									        <th>Email</th>
-									        <th>Meal Selection</th>
-									        <th>Message</th>
-									    </tr>
-									    <tr th:each = "attendee: ${attendees}">
-									        <td th:text="${attendee.name}"></td>
-									        <td th:text="${attendee.guestName}"></td>
-									        <td th:text="${attendee.isAttending}"></td>
-									        <td th:text="${attendee.email}"></td>
-									        <td th:text="${attendee.mealSelection}"></td>
-									        <td th:text="${attendee.message}"></td>
-									    </tr>
-									</table>
+                                    <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these terms before booking</h3>
+                                    <p class="popup__list">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        Sed sed risus pretium quam. Aliquam sem et tortor consequat id. Volutpat odio facilisis mauris sit
+                                        amet massa vitae. Mi bibendum neque egestas congue. Placerat orci nulla pellentesque dignissim enim
+                                        sit. Vitae semper quis lectus nulla at volutpat diam ut venenatis. Malesuada pellentesque elit eget
+                                        gravida cum sociis natoque penatibus et. Proin fermentum leo vel orci porta non pulvinar neque laoreet.
+                                        Gravida neque convallis a cras semper. Molestie at elementum eu facilisis sed odio morbi quis. Faucibus
+                                        vitae aliquet nec ullamcorper sit amet risus nullam eget. Nam libero justo laoreet sit. Amet massa
+                                        vitae tortor condimentum lacinia quis vel eros donec. Sit amet facilisis magna etiam. Imperdiet sed
+                                        euismod nisi porta.
+                                    </p>
                                 </div>
                         </form>
                     </div>
@@ -440,6 +466,6 @@
                 </div>
             </div>
         </div>
--->
+
     </body>
 </html>

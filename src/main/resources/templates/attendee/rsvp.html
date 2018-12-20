@@ -6,7 +6,7 @@
 
     <body>
     	<div class="navigation" th:include="../static/fragments/navbar.html"></div>
-        
+
         <section class="section-rsvp" id="section-rsvp">
                 <div class="row">
                     <div class="rsvp">
@@ -33,63 +33,37 @@
                                     <input type="text" class="form__input" placeholder="Message" id="message" th:field="*{message}">
                                     <label for="message" class="form__label">Message</label>
                                 </div>
-
-
-                                <div class="form__group u-margin-bottom-small">
-                                    <div class="form__radio-group-1">
-                                        <input type="radio" class="form__radio-input-1" id="yes" name="attendance" th:field="*{isAttending}" value="true">
-                                        <label for="true" class="form__radio-label-1">
-                                            <span class="form__radio-button-1"></span>
+                                <div class="form__group">
+                                    <div class="form__radio-group">
+                                        <input th:field="*{isAttending}" th:value="1" type="radio" class="form__radio-input" id="yes" name="attendance">
+                                        <label for="yes" class="form__radio-label" style="font-family: 'Lato', sans-serif;font-weight: 400;line-height: 1.7;color: #777;font-size: 1.6rem;">
                                             Attending
                                         </label>
                                     </div>
-
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-1" id="no" name="attendance" th:field="*{isAttending}" value="false">
-                                        <label for="false" class="form__radio-label-1">
-                                            <span class="form__radio-button-1"></span>
+                                        <input th:field="*{isAttending}" th:value="0" type="radio" class="form__radio-input" id="no" name="attendance">
+                                        <label for="no" class="form__radio-label" style="font-family: 'Lato', sans-serif;font-weight: 400;line-height: 1.7;color: #777;font-size: 1.6rem;">
                                             Not Attending
                                         </label>
                                     </div>
                                 </div>
 
-                                
-                                <div class="form__group u-margin-bottom-small">
-                                    <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-2" id="vegetarian" name="meal" th:field="*{mealSelection}" value="1">
-                                        <label for="vegetarian" class="form__radio-label-2">
-                                            <span class="form__radio-button-2"></span>
-                                            Vegetarian
-                                        </label>
-                                    </div>
-
-
-                                    <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input-2" id="none-vegetarian" name="meal" th:field="*{mealSelection}" value="2">
-                                        <label for="none-vegetarian" class="form__radio-label-2">
-                                            <span class="form__radio-button-2"></span>
-                                            None-Vegetarian
-                                        </label>
-                                    </div>
-
-                                </div>
-                                
                                 <div class="form__group">
-                                    <button href="#popup-confirm" class="btn btn-primary btn-animated" type="submit">Submit</button>
+                                    <button href="#popup-confirm" class="btn btn-primary btn-animated" type="submit" style="margin-left:5rem;">Submit</button>
                                 </div>
                                 <div class="form__group">
-                                    <a href="#popup-attendees-list" class = "btn btn-primary btn-animated">View list of attendees</a>
+                                    <a href="#popup-attendees-list" class = "btn btn-primary btn-animated" style="margin-left:5rem;">View list of attendees</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
-            
+
         </main>
-        
-        <footer class="footer" th:include="../static/Fragments/footer.html"></footer>
-        
+
+        <footer th:include="../static/Fragments/footer.html"></footer>
+
         <div class="popup" id="popup-confirm">
                 <div class="popup__content">
                     <div class="popup__left">
@@ -106,43 +80,36 @@
                                     </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-            
+
         <div class="popup" id="popup-attendees-list">
             <div class="popup__content">
                 <div class="popup__all">
                     <a href="#section-home" class="popup__close">&times;</a>
-                    <div class="new-item__form">
-                        <form action="#" class="form">
-                                <div class="u-margin-bottom-small">
-                                    <h2 class="heading-secondary">
-                                        Current Attendees
-                                    </h2>
-                                    <table>
-									    <tr>
-									        <th>Name</th>
-									        <th>Guest Name</th>
-									        <th>Attending?</th>
-									        <th>Email</th>
-									        <th>Meal Selection</th>
-									        <th>Message</th>
-									    </tr>
-									    <tr th:each = "attendee: ${attendees}">
-									        <td th:text="${attendee.name}"></td>
-									        <td th:text="${attendee.guestName}"></td>
-									        <td th:text="${attendee.isAttending}"></td>
-									        <td th:text="${attendee.email}"></td>
-									        <td th:text="${attendee.mealSelection}"></td>
-									        <td th:text="${attendee.message}"></td>
-									    </tr>
-									</table>
-                                </div>
-                        </form>
+                       <div style="min-height:30rem;" align="center">
+                           <h2 class="heading-secondary">
+                               Current Attendees
+                           </h2>
+                           <table class="popup-list" border="1" width="100%">
+							    <tr>
+							        <th>Name</th>
+							        <th>Guest Name</th>
+							        <th>Attending?</th>
+							        <th>Email</th>
+							        <th>Message</th>
+							    </tr>
+							    <tr th:each = "attendee: ${attendees}">
+							        <td th:text="${attendee.name}"></td>
+							        <td th:text="${attendee.guestName}"></td>
+							        <td th:text="${attendee.isAttending}"></td>
+							        <td th:text="${attendee.email}"></td>
+							        <td th:text="${attendee.message}"></td>
+							    </tr>
+							</table>
                     </div>
-                    
                 </div>
             </div>
         </div>

@@ -12,28 +12,39 @@ public class AttendeeController {
 	@Autowired
 	private AttendeeRepository attendeeRepository;
 	
+//	@GetMapping("/")
+//	public ModelAndView index(Attendee attendee) {
+//		ModelAndView mv = new ModelAndView("Attendee/index.html");
+//		mv.addObject("attendees", attendeeRepository.findAll());
+//		return mv;
+//	}
+
 	@GetMapping("/")
-	public ModelAndView index(Attendee attendee) {
+	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("Attendee/index.html");
-		mv.addObject("attendees", attendeeRepository.findAll());
-		
 		return mv;
 	}
+
+//	@GetMapping("/rsvp")
+//	public ModelAndView rsvp(Attendee attendee) {
+//		ModelAndView mv = new ModelAndView("Attendee/rsvp.html");
+//		mv.addObject("attendees", attendeeRepository.findAll());
+//		return mv;
+//	}
 	
 	@GetMapping("/rsvp")
 	public ModelAndView rsvp(Attendee attendee) {
 		ModelAndView mv = new ModelAndView("Attendee/rsvp.html");
 		mv.addObject("attendees", attendeeRepository.findAll());
-		
 		return mv;
 	}
-	
+
 	@PostMapping(value="/rsvp")
 	public ModelAndView addNewUser(Attendee attendee) {
 		attendeeRepository.save(attendee);
 		ModelAndView mv = new ModelAndView("Attendee/rsvp.html");
 		mv.addObject("attendees", attendeeRepository.findAll());
-		
+		System.out.println(attendee);
 		return mv;
 	}
 	

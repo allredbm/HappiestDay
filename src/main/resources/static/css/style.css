@@ -264,7 +264,7 @@ body {
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 28rem;
+    height: 34rem;
     background-blend-mode: screen;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
@@ -274,10 +274,15 @@ body {
     text-transform: uppercase;
     text-align: right;
     color: #fff;
+/*
+  	display: inline-block;
+    margin: 0 auto;
     position: absolute;
     top: 16rem;
     right: 2rem;
-    width: 55%; }
+    width: 55%; 
+*/
+	}
   .card__heading-span {
     padding: 1rem 1.5rem;
     -webkit-box-decoration-break: clone;
@@ -353,8 +358,7 @@ body {
   padding: 1.5rem 2rem;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.5);
-  border: none;
-  border-bottom: 3px solid transparent;
+  border: 1px solid #EEE;
   width: 90%;
   display: block;
   transition: all .3s; }
@@ -572,8 +576,8 @@ body {
     clear: both; }
   .row [class^="col-"] {
     float: left; }
-    .row [class^="col-"]:not(:last-child) {
-      margin-right: 6rem; }
+    .row [class^="col-"] {
+      margin: 2rem; }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -589,11 +593,11 @@ body {
 
 .footer {
   background-color: #333;
-  padding: 10rem 0;
+  padding: 3rem 0;
   font-size: 1.4rem; }
   .footer__logo-box {
     text-align: center;
-    margin-bottom: 8rem; }
+    margin-bottom: 3rem; }
   .footer__logo {
     width: 15rem;
     height: auto; }
@@ -771,3 +775,16 @@ body {
   .new-item__form {
     width: 90%;
     padding: 6rem; }
+
+table.popup-list{
+	font-size: 2rem;
+	border-collapse:collapse;
+	border:1px solid #eee;	
+}
+
+table.popup-list td{
+	border: 1px solid #eee;
+	border-collapse:collapse;
+	padding: 1rem;
+	text-align: center;
+}

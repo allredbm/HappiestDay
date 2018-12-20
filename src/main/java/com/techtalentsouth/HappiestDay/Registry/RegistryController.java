@@ -1,7 +1,5 @@
 package com.techtalentsouth.HappiestDay.Registry;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,32 +19,21 @@ public class RegistryController {
 	public ModelAndView index(Registry registryItem) {
 		ModelAndView mv = new ModelAndView("registry/registry-main");
 		mv.addObject("registryItems", registryRepository.findAll());
-		
 		return mv;
 	}
 
 	@PostMapping("/registry")
 	public ModelAndView createPost(Registry registry) {
-		ModelAndView mv = new ModelAndView("redirect:/registry");
-		registryRepository.save(registry);
+		ModelAndView mv = new ModelAndView("registry/registry-main");
+		Registry post = registryRepository.save(registry);
 		mv.addObject("registryItems", registryRepository.findAll());
-		
 		return mv;
 	}
 	
-	@PutMapping(value="/registry/{id}")
-	public ModelAndView updatePost(@PathVariable Long id, Registry registry) {
-		Optional<Registry> fetch = registryRepository.findById(id);
-		Registry currentRegistry = fetch.get();
-		currentRegistry.setItemName(registry.getItemName());
-		currentRegistry.setItemURL(registry.getItemURL());
-		currentRegistry.setImageURL(registry.getImageURL());
-		currentRegistry.setDesireScale(registry.getDesireScale());
+	@PutMapping(value="/registry")
+	public ModelAndView updatePost(Registry registry) {
+		ModelAndView mv = new ModelAndView("redirect:/");
 		registryRepository.save(registry);
-		
-		ModelAndView mv = new ModelAndView("redirect:/registry");
-		mv.addObject("registryItems", registryRepository.findAll());
-		
 		return mv;
 	}
 	
@@ -58,4 +45,5 @@ public class RegistryController {
 		
 		return mv;
 	}
+
 }

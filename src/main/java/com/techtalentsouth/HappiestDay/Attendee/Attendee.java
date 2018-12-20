@@ -15,7 +15,6 @@ public class Attendee {
 	private String guestName;
 	private boolean isAttending;
 	private String email;
-	private int mealSelection;
 	private String message;
 	
 	public Attendee() {
@@ -27,14 +26,12 @@ public class Attendee {
 		String guestName,
 		boolean isAttending,	
 		String email, 
-		int mealSelection, 
 		String message
 	) {
 		this.name = name;
 		this.guestName = guestName;
 		this.isAttending = isAttending;
 		this.email = email;
-		this.mealSelection = mealSelection;
 		this.message = message;
 	}
 	
@@ -58,7 +55,7 @@ public class Attendee {
 		return isAttending;
 	}
 	
-	public void setAttending(boolean isAttending) {
+	public void setIsAttending(boolean isAttending) {
 		this.isAttending = isAttending;
 	}
 	
@@ -70,13 +67,7 @@ public class Attendee {
 		this.email = email;
 	}
 	
-	public int getMealSelection() {
-		return mealSelection;
-	}
-	
-	public void setMealSelection(int mealSelection) {
-		this.mealSelection = mealSelection;
-	}
+
 	
 	public String getMessage() {
 		return message;
@@ -89,6 +80,7 @@ public class Attendee {
 	@Override
 	public String toString() {
 		return "Attendee [name=" + name + ", guestName=" + guestName + ", isAttending=" + isAttending + ", email="
-				+ email + ", mealSelection=" + mealSelection + ", message=" + message + "]";
+				+ email + ", message=" + message + "]";
 	}
 }
+

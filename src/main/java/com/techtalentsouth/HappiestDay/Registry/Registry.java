@@ -28,7 +28,7 @@ public class Registry {
     	this.imageURL = imageURL;
     	this.quantityRequested = quantityRequested;
     	this.quantityPurchased = 0;
-    	this.desireScale = desireScale;
+    	this.desireScale = desireScale;    	
     }
 
 	public Long getId() {
