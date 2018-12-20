@@ -25,15 +25,7 @@
                                 </h4>
                                 <div class="card__details">
                                     <ul>
-<!--
-                                        <li>We'd like <span>2</span> of these</li>
- -->                                        <li>Desire Scale: <span th:text="${registryItem.desireScale}"></span> / 5 </li>
- 
-<!--
-	                                            <div class="desire-scale-box" data-progress-percent="25">
-                                            		<span class="desire-scale-fill" style="width: 70%">&nbsp;</span>
-												</div>
- -->
+                                        <li>Desire Scale: <span th:text="${registryItem.desireScale}"></span> / 5 </li>
                                     </ul>
                                 </div>
                             </div>
@@ -144,7 +136,7 @@
                 <div class="popup__all">
                     <a href="#section-home" class="popup__close">&times;</a>
                     <div class="new-item__form">
-                        <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.getId()})}" th:method="put" class="form">
+                        <!-- <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.getId()})}" th:method="put" class="form">
                                 <div class="u-margin-bottom-small">
                                     <h2 class="heading-secondary">
                                         Edit Registry
@@ -171,7 +163,7 @@
                             <div class="form__group">
                                     <button class="btn btn-primary" type="submit">Update item</button>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
