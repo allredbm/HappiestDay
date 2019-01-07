@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:include="../static/Fragments/head.html :: head">
+        <title id="pageTitle">HappiestDay.Com</title>
+    </head>
+
+
+    <body>
+    	<div class="navigation" th:include="../static/fragments/navbar.html"></div>
+        
+        <section class="section-registry" id="section-registry">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                            Our wedding registry
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-1-of-3" th:each="registryItem : ${registryItems}">
+                        <div class="card">
+                            
+                            <div class="card__side card__side--front">
+                                <div class="card__picture card__picture" th:style="'background-image:url(' + ${registryItem.imageURL} + ');'"></div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--1" th:text="${registryItem.itemName}"></span>
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <li>Desire Scale: <span th:text="${registryItem.desireScale}"></span> / 5 </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card__side card__side--back card__side--back-1">
+                                <div class="card__cta-1">
+                                    <a class="btn btn-white" th:href="${registryItem.itemURL}" target="_blank">Buy</a>
+                                </div>
+                                <div class="card__cta-2">
+                                    <a href="#" class="btn btn-white">Mark as bought</a>
+                                </div>
+                                <div class="card__cta-3">
+                                    <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.getId()})}" th:method="delete" class="form-horizontal">
+									    <div class="form-group">
+									        <input type="hidden" name="_method" value="delete"/>
+									        <button type="submit" class="btn btn-primary-dark">Remove Item</button>
+									    </div>
+									</form>
+                                </div>
+                                <div class="card__cta-4">
+                                    <form action="#" th:action="@{'/registry/{id}'(id=${registryItem.Id})}" th:method="get" class="form-horizontal">
+								        <div class="form-group">
+								            <input type="hidden" name="_method" value="get"/>
+									        <button type="submit" class="btn btn-primary-dark">Edit Item</button>
+									    </div>
+									</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-center-text u-margin-bottom-big">
+                    <a href="#popup-add" class="btn btn-primary">Add Item</a>
+                </div>
+                <div class="u-center-text u-margin-bottom-big">
+                    <a href="#popup-registry-list" class="btn btn-primary">View list</a>
+                </div>
+            </section>
+            
+        <div th:include="../static/Fragments/footer.html"></div>
+        
+        <div class="popup" id="popup-add">
+            <div class="popup__content">
+                <div class="popup__left">
+                    <img src="/img/weddingpresent2.png" alt="Tour photo" class="popup__img">
+                    <img src="/img/weddingpresent1.jpg" alt="Tour photo" class="popup__img">
+                </div>
+                <div class="popup__right">
+                    <a href="#section-registry" class="popup__close">&times;</a>
+                    <div class="new-item__form">
+                        <form action="#" th:action="@{/registry}" th:object="${registry}" method="post" class="form">
+                                <div class="u-margin-bottom-small">
+                                    <h2 class="heading-secondary">
+                                        Add a new item
+                                    </h2>
+                                </div>
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="Item name" id="name" th:field="*{itemName}" required>
+                                <label for="name" class="form__label">Item name</label>
+                            </div>
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="Link to item" id="url" th:field="*{itemURL}" required>
+                                <label for="url" class="form__label">Link to item</label>
+                            </div>
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="Link to item image" id="image-url" th:field="*{imageURL}" required>
+                                <label for="image-url" class="form__label">Link to item image</label>
+                            </div>
+
+                            <div class="form__group">
+                                <input type="text" class="form__input" placeholder="1-5" id="desire" th:field="*{desireScale}" required>
+                                <label for="desire" class="form__label">Desire scale</label>
+                            </div>
+    
+                            <div class="form__group">
+                                    <button href="#" class="btn btn-primary" type="submit">Add item</button>
+                            </div>
+
+                            
+                        </form> 
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="popup" id="popup-registry-list">
+            <div class="popup__content">
+                <div class="popup__all">
+                    <a href="#section-home" class="popup__close">&times;</a>
+                       <div class="u-margin-bottom-small" align="center">
+                           <h2 class="heading-secondary">
+                               Current Registry Items
+                           </h2>
+							<table class="popup-list" width="50%">
+								<tr>
+									<th>Image</th>
+									<th>Item Name</th>
+						        	<th>Desire Scale</th>
+								</tr>
+								<tr th:each = "registryItem: ${registryItems}">
+                                    <td><img th:src="${registryItem.imageURL}" width="50"></td>
+                                    <td><a style="text-decoration:none; color:blue;"th:href="${registryItem.itemURL}"><span th:text="${registryItem.itemName}"></span></a></td>
+						        	<td th:text="${registryItem.desireScale}"></td>
+								</tr>
+							</table>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
