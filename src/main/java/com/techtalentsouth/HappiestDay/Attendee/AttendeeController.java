@@ -14,14 +14,14 @@ public class AttendeeController {
 
 	@GetMapping("/")
 	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView("Attendee/index.html");
+		ModelAndView mv = new ModelAndView("attendee/index.html");
 		
 		return mv;
 	}
 	
 	@GetMapping("/rsvp")
 	public ModelAndView rsvp(Attendee attendee) {
-		ModelAndView mv = new ModelAndView("Attendee/rsvp.html");
+		ModelAndView mv = new ModelAndView("attendee/rsvp.html");
 		mv.addObject("attendees", attendeeRepository.findAll());
 
 		return mv;
