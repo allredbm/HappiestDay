@@ -17,7 +17,7 @@ public class RegistryController {
 	@Autowired
 	private RegistryRepository registryRepository;
 	
-	@GetMapping("/registry")
+	@GetMapping("registry")
 	public ModelAndView index(Registry registryItem) {
 		ModelAndView mv = new ModelAndView("registry/registry-main");
 		mv.addObject("registryItems", registryRepository.findAll());
@@ -25,7 +25,7 @@ public class RegistryController {
 		return mv;
 	}
 
-	@PostMapping("/registry")
+	@PostMapping("registry")
 	public ModelAndView createPost(Registry registry) {
 		ModelAndView mv = new ModelAndView("registry/registry-main");
 		registryRepository.save(registry);
@@ -34,7 +34,7 @@ public class RegistryController {
 		return mv;
 	}
 	
-	@GetMapping("/registry/{id}")
+	@GetMapping("registry/{id}")
 	public ModelAndView edit(@PathVariable Long id, Registry registryItem) {
 		Optional<Registry> registryItem1 = registryRepository.findById(id);
 		
@@ -49,7 +49,7 @@ public class RegistryController {
 		return mv;
 	}
 	
-	@PutMapping(value="/registry/{id}")
+	@PutMapping(value="registry/{id}")
 	public ModelAndView updatePost(@PathVariable Long id, Registry registry) {
 		Optional<Registry> registryItem1 = registryRepository.findById(id);
 		
@@ -70,7 +70,7 @@ public class RegistryController {
 		return mv;
 	}
 	
-	@DeleteMapping(value="/registry/{id}")
+	@DeleteMapping(value="registry/{id}")
 	public ModelAndView deletePost(@PathVariable Long id) {
 		registryRepository.deleteById(id);
 		ModelAndView mv = new ModelAndView("redirect:/registry");

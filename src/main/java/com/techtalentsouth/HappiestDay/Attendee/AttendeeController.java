@@ -19,7 +19,7 @@ public class AttendeeController {
 		return mv;
 	}
 	
-	@GetMapping("/rsvp")
+	@GetMapping("rsvp")
 	public ModelAndView rsvp(Attendee attendee) {
 		ModelAndView mv = new ModelAndView("attendee/rsvp.html");
 		mv.addObject("attendees", attendeeRepository.findAll());
@@ -27,7 +27,7 @@ public class AttendeeController {
 		return mv;
 	}
 
-	@PostMapping(value="/rsvp")
+	@PostMapping(value="rsvp")
 	public ModelAndView addNewUser(Attendee attendee) {
 		attendeeRepository.save(attendee);
 		ModelAndView mv = new ModelAndView("redirect:/rsvp#popup-confirm");
